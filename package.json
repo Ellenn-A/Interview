@@ -12,8 +12,16 @@
   "bugs": {
     "url": "https://github.com/CDECatapult/lossy-fuzzer/issues"
   },
+  
+    "scripts": {
+      "test": "jest"
+    },
+  
   "homepage": "https://github.com/CDECatapult/lossy-fuzzer#readme",
   "devDependencies": {
     "prettier": "^2.8.7"
+  },
+  "dependencies": {
+    "jest": "^29.5.0"
   }
 }

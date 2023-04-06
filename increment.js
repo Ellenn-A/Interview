@@ -6,8 +6,75 @@
 */
 
 function incrementStr(str) {
-  // implement your solution here
-  return 'new string'
+  let lastindex = str.length;
+  //check if no. ends in '9'
+  let endsIn9 = false;
+  if (Number.isInteger(parseInt(str.charAt(lastindex - 1))) == true) {
+      let endsIn9I = Number.parseInt(str.charAt(lastindex - 1));
+      endsIn9 = endsIn9I == 9 ? true : false;
+
+  }
+  //check where to slice to get all nums at the end
+  let indexToSliceFrom = lastindex;
+  for (let i = 0; i < lastindex; i++) {
+
+      let lastLetter = str.charAt(lastindex - 1 - i);
+      let lastNumber = Number.parseInt(lastLetter);
+
+      if (Number.isInteger(lastNumber) != true) {
+          break;
+      }
+
+      indexToSliceFrom = lastindex - 1 - i; //this is index of the number
+
+  }
+
+  let res = "";
+
+  if (endsIn9 == false) {
+
+      let lastNumber = Number.parseInt(str.charAt(lastindex - 1));
+
+      if (Number.isInteger(lastNumber) == true) {
+          substring = str.slice(0, lastindex - 1);
+          res = substring.concat((lastNumber + 1).toString());
+      }
+      else if (Number.isNaN(lastNumber) == true) {
+          res = str.concat("1");
+      }
+      return res;
+  } else if (endsIn9 == true) {
+
+
+      let precedingZeroIndex = 0;
+      for (let i = 0; i < lastindex; i++) {
+
+          let lastLetter = str.charAt(lastindex - 1 - i);
+          let lastNumber = Number.parseInt(lastLetter);
+
+         
+
+          if (Number.isInteger(lastNumber) != true) {
+              precedingZeroIndex = lastindex - 1; //this is index of the number
+              let lastNumber = Number.parseInt(str.slice(precedingZeroIndex));
+              substring = str.slice(0, precedingZeroIndex);
+              res = substring.concat((lastNumber + 1).toString());
+              break;
+          } else if (lastLetter == 0) {
+              precedingZeroIndex = lastindex - i;
+              let lastNumber = Number.parseInt(str.slice(precedingZeroIndex));
+              substring = str.slice(0, precedingZeroIndex - 1);
+              res = substring.concat((lastNumber + 1).toString());
+              break;
+          }
+
+
+
+      }
+
+      return res;
+  }
+
 }
 
 console.log(incrementStr('dc')) // expected result - dc1
