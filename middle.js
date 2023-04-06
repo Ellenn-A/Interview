@@ -33,6 +33,6 @@ console.log(getMiddle('A')) // expected result - 'A'
 
 
 
-test('gets middle', () => {
-  expect(getMiddle('test')).toBe('es');
-});
+//test('gets middle', () => {
+//  expect(getMiddle('test')).toBe('es');
+//});

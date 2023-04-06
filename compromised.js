@@ -12,11 +12,12 @@ function findCompromised(arr) {
   let res;
   
  for (let i = 0; i < 3; i++){
- let int = arr[0]%2==0;
-if (int ==0){
+ let int = arr[i]%2==0;
+if (int){
   isEven++;
 }else{
   isOdd ++;
+}
 }
 
 if (isOdd >=2){
@@ -37,7 +38,7 @@ res = arr[i];
   }
 }
 
- }
+ 
 
 
 
@@ -46,3 +47,4 @@ res = arr[i];
 
 console.log(findCompromised([2, 4, 0, 100, 4, 11, 2602, 36, 22, 2, 4, 10, -20, -10300])) // expected result - 11 (the only odd number)
 console.log(findCompromised([160, 3, 1719, 19, 11, 13, -21, -1, 20001])) // expected result - 160 (the only even number)
+
